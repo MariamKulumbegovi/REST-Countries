@@ -1,15 +1,15 @@
-import {H1} from './components/H1';
-import { User } from './components/User';
+import { Header, Content, Footer } from './components/layout';
 import './App.css';
-import { currentUser } from './components/helpers/user';
+
 
 function App() {
 
   return (
-    <div className="modal is-active is-clipped ">
-      <H1/>
-      <User user={currentUser} age bio />
-      <User/>      
+    <div className="flex 	">
+      <Header/>
+      <Content/>
+      <Footer/>
+
 
       
     </div>

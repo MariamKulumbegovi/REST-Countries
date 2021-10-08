@@ -1,0 +1,14 @@
+.h {
+    color: black;
+}
+.button {
+    background-color:#dfcfcf;
+}
+.box {
+    display: flex;
+    align-items: center;
+    background-color: #cac0c0;
+}
+.button-wrapper {
+    margin-left: 30px;
+}

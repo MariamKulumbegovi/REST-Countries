@@ -1,12 +1,12 @@
-.modal {
-  background-color: rgb(78, 74, 74);
-  justify-content: flex-start;
-}
-.modal-content {
-  color: rgb(20, 18, 18);
-}
+
 .content {
-  background-color: rgb(130, 179, 179);
-  border-radius: 12px;
+  background-color: rgb(87, 80, 80);
   padding: 20px;
+}
+.flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  background-color: rgb(87, 80, 80);
 }
