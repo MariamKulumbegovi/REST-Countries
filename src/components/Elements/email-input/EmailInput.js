@@ -38,6 +38,7 @@ export const EmailInput=() => {
                     placeholder="Email"
                     name="email"
                     value={value}
+                    required
                     onChange={({target})=>setvalue(target.value)}  
                     />
                 <span className="icon is-small is-left">

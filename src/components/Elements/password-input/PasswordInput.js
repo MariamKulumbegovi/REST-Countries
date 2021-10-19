@@ -36,6 +36,7 @@ export const PasswordInput =() => {
                 placeholder="Password"
                 name="password"
                 value={password}
+                required
                 onChange={({target})=>setPassword(target.value)}
 
                 

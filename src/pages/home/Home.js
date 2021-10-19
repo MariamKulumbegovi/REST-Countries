@@ -1,19 +1,20 @@
-import { Counter } from "../counter"
-import { LoginForm } from "../forms"
+import { Counter } from "../../components/counter"
 
 
-export const Content =(props) => {
 
-    // const values= [1,2,3,4]
+export const Home =() => {
+
+    const values= [1,2,3,4]
 
     return (
         <div className="section is-medium">
-            {/* <div>
+            <div>
             {values.map((item)=>{
                 return <Counter initialValue={item} key={`item-${item}`}/>
             })}
-            </div> */}
-            <LoginForm/>
+            </div>
+            
+            
 
         </div>
     )

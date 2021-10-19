@@ -1,13 +1,15 @@
 import '../../css/header.css'
+import { Link,NavLink } from 'react-router-dom'
+import * as route from '../constants/routes'
 
-export const Header= (props) => {
+export const Header= () => {
 return (
     <div className="">
         <nav className="navbar" role="navigation" aria-label="main navigation">
             <div className="navbar-brand">
-                <a className="navbar-item" href="https://bulma.io">
+                <Link className="navbar-item" to="/">
                 <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28"/>
-                </a>
+                </Link>
 
                 <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
                 <span aria-hidden="true"></span>
@@ -18,33 +20,33 @@ return (
 
             <div id="navbarBasicExample" className="navbar-menu">
                 <div className="navbar-start">
-                <a className="navbar-item">
+                <NavLink  className="navbar-item" to={route.HOME_PATH}>
                     Home
-                </a>
+                </NavLink>
 
-                <a className="navbar-item">
-                    Documentation
-                </a>
+               <NavLink className="navbar-item" to={route.ASKQUESTION_PATH}>
+                    Ask a Question (this page is protected)
+                </NavLink>
 
                 <div className="navbar-item has-dropdown is-hoverable">
-                    <a className="navbar-link">
+                    <NavLink className="navbar-link" to="#">
                     More
-                    </a>
+                    </NavLink>
 
                     <div className="navbar-dropdown">
-                    <a className="navbar-item">
+                    <NavLink className="navbar-item" to="#">
                         About
-                    </a>
-                    <a className="navbar-item">
+                    </NavLink>
+                    <NavLink className="navbar-item" to="#">
                         Jobs
-                    </a>
-                    <a className="navbar-item">
+                    </NavLink>
+                    <NavLink className="navbar-item" to="#">
                         Contact
-                    </a>
+                    </NavLink>
                     <hr className="navbar-divider"/>
-                    <a className="navbar-item">
+                    <NavLink className="navbar-item" to="#">
                         Report an issue
-                    </a>
+                    </NavLink>
                     </div>
                 </div>
                 </div>
@@ -52,12 +54,12 @@ return (
                 <div className="navbar-end">
                 <div className="navbar-item">
                     <div className="buttons">
-                    <a className="button is-danger" href="#">
+                    <NavLink className="button is-danger" to="/register">
                         <strong>Sign up</strong>
-                    </a>
-                    <a className="button is-light">
+                    </NavLink>
+                    <NavLink className=" button is-dark" to={route.LOGIN_PATH}>
                         Log in
-                    </a>
+                    </NavLink>
                     </div>
                 </div>
                 </div>

@@ -1,5 +1,6 @@
-import { Header, Content, Footer } from './components/layout';
+import { Header,  Footer } from './components/layout';
 import './App.css';
+import { Routes } from './Routes';
 
 
 function App() {
@@ -7,7 +8,7 @@ function App() {
   return (
     <div className="flex 	">
       <Header/>
-      <Content/>
+      <Routes/>
       <Footer/>
 
 
