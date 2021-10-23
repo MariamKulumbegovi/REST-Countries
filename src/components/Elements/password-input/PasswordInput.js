@@ -1,18 +1,23 @@
 import { useState, useEffect } from "react";
 import {Password_Min_Value} from '../../constants/Validation'
 
+
 export const PasswordInput =() => {
+
+    
     const [password,setPassword]=useState("")
     const [passwordError,setPasswordError]=useState("")
 
     
+    
+    // let number = /[0-9]/;
+    // || !number.test(password)
+    // || !number.test(password)
 
-    let number = /[0-9]/;
-
-    useEffect(()=>{if(password && password.length < Password_Min_Value || !number.test(password) ) {
+    useEffect(()=>{if(password && password.length < Password_Min_Value  ) {
         setPasswordError(true) 
         
-    } else if (password && password.length >=Password_Min_Value || !number.test(password)){
+    } else if (password && password.length >=Password_Min_Value  ){
         setPasswordError(false)
     }},[password])
 
@@ -26,6 +31,7 @@ export const PasswordInput =() => {
     }
     return errorClassName;
    }
+   
 
    return (
        <> 
@@ -52,8 +58,9 @@ export const PasswordInput =() => {
             </span>}
         </p>
     
-    
+
     
     </>
+   
    )
 }

@@ -10,7 +10,11 @@
   height: 100vh;
   background-color: rgb(87, 80, 80);
 }
-.h-s {
-  color: #ffff;
+.content .h1   {
+  color:rgb(197, 197, 197);
   font-size: 50px;
+}
+.strong {
+  font-size: 30px;
+  color: rgb(214, 218, 214);
 }

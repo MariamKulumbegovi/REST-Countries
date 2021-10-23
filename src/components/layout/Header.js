@@ -1,9 +1,35 @@
+import { useContext } from 'react'
 import '../../css/header.css'
 import { Link,NavLink } from 'react-router-dom'
 import * as route from '../constants/routes'
+import { AuthContext } from '../providers/AuthProvider'
 
 export const Header= () => {
-return (
+
+    const {loggedIn,logOut}=useContext(AuthContext)
+
+    const renderGuest=() => {
+     return   (<div className="buttons">
+            <NavLink className="button is-danger" to={route.REGISTER_PATH}>
+                 <strong>Sign up</strong>
+            </NavLink>
+            <NavLink className=" button is-dark" to={route.LOGIN_PATH}>
+               Log in
+            </NavLink>
+        </div>)
+    }
+    const renderUser=()=>{
+    return (
+             <div className="buttons">
+                <button className="button is-danger" onClick={logOut} >
+                    Log Out
+                </button>
+                </div>
+            )
+    }
+    
+
+    return (
     <div className="">
         <nav className="navbar" role="navigation" aria-label="main navigation">
             <div className="navbar-brand">
@@ -22,6 +48,9 @@ return (
                 <div className="navbar-start">
                 <NavLink  className="navbar-item" to={route.HOME_PATH}>
                     Home
+                </NavLink>
+                <NavLink  className="navbar-item" to={route.COUNTER_PATH}>
+                    Counter
                 </NavLink>
 
                <NavLink className="navbar-item" to={route.ASKQUESTION_PATH}>
@@ -53,14 +82,8 @@ return (
 
                 <div className="navbar-end">
                 <div className="navbar-item">
-                    <div className="buttons">
-                    <NavLink className="button is-danger" to="/register">
-                        <strong>Sign up</strong>
-                    </NavLink>
-                    <NavLink className=" button is-dark" to={route.LOGIN_PATH}>
-                        Log in
-                    </NavLink>
-                    </div>
+                    {loggedIn? renderUser() :renderGuest()}
+                   
                 </div>
                 </div>
             </div>

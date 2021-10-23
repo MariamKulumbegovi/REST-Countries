@@ -1,91 +1,97 @@
-export const Register=() => {
-    return (
-        <div className="content">
-        <div className="field">
-        <label className="label">Name</label>
-        <div className="control">
-            <input className="input" type="text" placeholder="Text input"/>
-        </div>
-        </div>
+import { useState } from "react";
+import { useAuthContext } from "../../../components/providers/AuthProvider";
+import { EmailInput } from "../../../components/Elements"
+import { ConfirmPassword } from "../../../components/Elements/confirmPassword/ConfirmPassword";
+import { saveItem } from "../../../components/helpers/LocalStorage";
+import { AUTH_TOKEN } from "../../../components/constants/Constants";
+import '../../../App.css'
+export const Register = () => {
+    
+    const [registered,setRegistered]=useState(false)
+   
+// const {logIn}=useAuthContext()
 
-        <div className="field">
-        <label className="label">Username</label>
-        <div className="control has-icons-left has-icons-right">
-            <input className="input is-success" type="text" placeholder="Text input" value="bulma"/>
-            <span className="icon is-small is-left">
-            <i className="fas fa-user"></i>
-            </span>
-            <span className="icon is-small is-right">
-            <i className="fas fa-check"></i>
-            </span>
-        </div>
-        <p className="help is-success">This username is available</p>
-        </div>
+    const onSubmit = (event) => {
+        event.preventDefault();
+    
+        const fd = new FormData(event.target);
+        const loginData = {};
+        
+    
+        for (let [key, value] of fd.entries()) {
+          loginData[key] = value;
+          delete loginData.confirmPassword;
+         
+        }
+        console.log(loginData)
+        
+    
+        fetch(`${process.env.REACT_APP_API_URL}/register`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(loginData),
+        })
+          .then((res) => res.json())
+          .then((result) => {
+            if(result.token){
+             saveItem(AUTH_TOKEN,result.token) 
+             setRegistered(true)
+            }
+        })
+          .catch((error) => {
+            console.log(error);
+          });
 
+          
+      };
+      const register=()=> {
+          return (
+             
+            <form className="content" onSubmit={onSubmit}>
+            <code>
+            "email": "eve.holt@reqres.in",
+            " password": "pistol"
+        </code>
         <div className="field">
-        <label className="label">Email</label>
-        <div className="control has-icons-left has-icons-right">
-            <input className="input is-danger" type="email" placeholder="Email input" value="hello@"/>
-            <span className="icon is-small is-left">
-            <i className="fas fa-envelope"></i>
-            </span>
-            <span className="icon is-small is-right">
-            <i className="fas fa-exclamation-triangle"></i>
-            </span>
-        </div>
-        <p className="help is-danger">This email is invalid</p>
-        </div>
-
-        <div className="field">
-        <label className="label">Subject</label>
-        <div className="control">
-            <div className="select">
-            <select>
-                <option>Select dropdown</option>
-                <option>With options</option>
-            </select>
+            <EmailInput/>
+            
+            </div>
+            <div className="field">
+            <ConfirmPassword/>
+            </div>
+            
+            <p className="control">
+                <button className="button is-danger" >
+                        Register
+                </button >
+            </p>
+            
+        </form>
+          )
+    
+      }
+      const registerSuccess=()=> {
+        return (
+        <div className="content flex">
+            <div className="field"> 
+                <h1 className="h1">Successfully Registered!</h1>
+                <strong className="strong"> You can go to the log in page now</strong>
             </div>
         </div>
-        </div>
-
-        <div className="field">
-        <label className="label">Message</label>
-        <div className="control">
-            <textarea className="textarea" placeholder="Textarea"></textarea>
-        </div>
-        </div>
-
-        <div className="field">
-        <div className="control">
-            <label className="checkbox">
-            <input type="checkbox"/>
-            I agree to the <a href="#">terms and conditions</a>
-            </label>
-        </div>
-        </div>
-
-        <div className="field">
-        <div className="control">
-            <label className="radio">
-            <input type="radio" name="question"/>
-            Yes
-            </label>
-            <label className="radio">
-            <input type="radio" name="question"/>
-            No
-            </label>
-        </div>
-        </div>
-
-        <div className="field is-grouped">
-        <div className="control">
-            <button className="button is-link">Submit</button>
-        </div>
-        <div className="control">
-            <button className="button is-link is-light">Cancel</button>
-        </div>
-        </div>
-        </div>
+       
+        )
+    }
+    
+    return  (
+    <>
+    {registered?registerSuccess() :  register()  }
+    </>
     )
+ }
 
-}
+
+
+

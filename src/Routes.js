@@ -2,6 +2,7 @@ import { Switch, Route } from "react-router"
 import { Home,LoginForm,AskQuestion, Register } from "./pages"
 import * as route from './components/constants/routes'
 import { SecurePage } from "./components/Elements"
+import { CounterPage } from "./pages/counter/CounterPage"
 
 export const Routes= ()=> {
     return(
@@ -19,6 +20,9 @@ export const Routes= ()=> {
                 <SecurePage 
                     Component={AskQuestion}
                 /> 
+            </Route>
+            <Route path={route.COUNTER_PATH}>
+                <CounterPage/>
             </Route>
            
         </Switch>

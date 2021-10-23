@@ -1,12 +1,12 @@
-
+import { useAuthContext } from "../../../components/providers/AuthProvider";
 import { EmailInput, PasswordInput } from "../../../components/Elements"
-import { useHistory } from "react-router";
-import {ASKQUESTION_PATH} from "../../../components/constants/routes"
+
 
 export const LoginForm = () => {
+    
 
    
-    const history=useHistory()
+const {logIn}=useAuthContext()
 
     const onSubmit = (event) => {
         event.preventDefault();
@@ -29,7 +29,8 @@ export const LoginForm = () => {
           .then((res) => res.json())
           .then((result) => {
             if(result.token){
-                history.replace(ASKQUESTION_PATH)
+              logIn(result.token)
+              
             }
         })
           .catch((error) => {
@@ -40,6 +41,10 @@ export const LoginForm = () => {
     return (
     
     <form className="content" onSubmit={onSubmit}>
+      <code>
+      "email": "eve.holt@reqres.in",
+      "password": "cityslicka"
+      </code>
         <div className="field">
         <EmailInput/>
            
@@ -58,31 +63,7 @@ export const LoginForm = () => {
  }
 
 
-// import { useHistory } from "react-router-dom";
-// import { EmailInput, PasswordInput } from "../../../components/Elements/index";
-// // import { PasswordInput } from "../../atoms/PasswordInput";
-// // import { DOCUMENTATION_PATH } from "../../constants/routes";
+// export const passValue=() => {
+//   PasswordInput.value
+// }
 
-// export const LoginForm = () => {
-//   const history = useHistory();
-
- 
-
-//   return (
-//     <form onSubmit={onSubmit}>
-//       <div className="field">
-//         <EmailInput name="email" />
-//       </div>
-//       <div className="field">
-//         <PasswordInput name="password" />
-//       </div>
-//       <div className="field">
-//         <p className="control">
-//           <button className="button is-success" type="submit">
-//             Login
-//           </button>
-//         </p>
-//       </div>
-//     </form>
-//   );
-// };

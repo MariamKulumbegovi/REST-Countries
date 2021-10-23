@@ -1,5 +1,5 @@
-import { Counter } from "../../components/counter"
 
+import starryNight from '../../img/starryNight.jpg';
 
 
 export const Home =() => {
@@ -7,12 +7,9 @@ export const Home =() => {
     const values= [1,2,3,4]
 
     return (
-        <div className="section is-medium">
-            <div>
-            {values.map((item)=>{
-                return <Counter initialValue={item} key={`item-${item}`}/>
-            })}
-            </div>
+        <div >
+            <img src={starryNight} width="100%" height="100vh" />
+    
             
             
 
