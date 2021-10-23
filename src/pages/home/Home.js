@@ -4,7 +4,6 @@ import starryNight from '../../img/starryNight.jpg';
 
 export const Home =() => {
 
-    const values= [1,2,3,4]
 
     return (
         <div >
