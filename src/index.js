@@ -3,8 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter} from 'react-router-dom'
-import { AuthProvider } from './components/providers/AuthProvider'
+import { BrowserRouter } from 'react-router-dom';
+import { AuthProvider } from './components/providers/AuthProvider';
+import axios from 'axios'
+
+axios.defaults.baseURL=process.envREACT_APP_API_URL
 
 ReactDOM.render(
   <React.StrictMode>

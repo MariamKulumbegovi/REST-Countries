@@ -1,9 +1,28 @@
-import { NameInput } from "../../components/Elements/name-input/NameInput";
+import { useEffect } from 'react';
+import { withUserList } from '../../hoc';
 
-export const AskQuestion = () => {
-    return (
+
+
+ const AskQuestion = ({userList}) => {
+
+ useEffect(()=>{},[userList])
+
+  return (
     <div className="box is-justify-content-center">
-        <NameInput/>
+      <div className="columns is-flex-wrap-wrap ">
+      {userList.map(item => {
+          return (
+            <div className="column box is-one-third" key={item.id}>
+               <img src= {item.avatar} width="30%" height="30px" />
+               <strong className="mx-2">{item.first_name} {item.last_name}</strong>
+            </div>
+          );
+        })}
+      </div>
     </div>
-    )
-}
+  );
+};
+
+export default withUserList(AskQuestion) 
+
+

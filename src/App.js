@@ -1,18 +1,13 @@
-import { Header,  Footer } from './components/layout';
+import { Header, Footer } from './components/layout';
 import './App.css';
 import { Routes } from './Routes';
 
-
 function App() {
-
   return (
     <div className="flex 	">
-      <Header/>
-      <Routes/>
-      <Footer/>
-
-
-      
+      <Header />
+      <Routes />
+      <Footer />
     </div>
   );
 }
