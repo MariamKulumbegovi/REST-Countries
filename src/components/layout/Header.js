@@ -22,6 +22,9 @@ export const Header = () => {
   const renderUser = () => {
     return (
       <div className="buttons">
+        <NavLink className="navbar-item button" to={route.MAINUSER_PATH}>
+          Main User
+        </NavLink>
         <button className="button is-danger" onClick={logOut}>
           Log Out
         </button>

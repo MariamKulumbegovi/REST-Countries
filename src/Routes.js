@@ -2,7 +2,8 @@ import { Switch, Route } from 'react-router';
 import { Home, LoginForm, AskQuestion, Register } from './pages';
 import * as route from './constants/routes';
 import { SecurePage } from './components/Elements';
-import { CounterPage } from './pages/counter/CounterPage';
+import CounterPage from './pages/counter/CounterPage';
+import MainUserPage from './pages/MainUser/MainUserPage';
 
 export const Routes = () => {
   return (
@@ -21,6 +22,9 @@ export const Routes = () => {
       </Route>
       <Route path={route.COUNTER_PATH}>
         <CounterPage />
+      </Route>
+      <Route path={route.MAINUSER_PATH}>
+        <MainUserPage />
       </Route>
     </Switch>
   );

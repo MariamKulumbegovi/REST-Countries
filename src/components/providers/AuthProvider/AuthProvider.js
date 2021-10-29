@@ -7,7 +7,6 @@ import {
   saveItem,
 } from '../../../helpers/LocalStorage';
 import { ASKQUESTION_PATH } from '../../../constants/routes';
-
 export const AuthContext = React.createContext(null);
 
 AuthContext.displayName = 'AuthContext';
