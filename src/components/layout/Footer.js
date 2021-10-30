@@ -2,7 +2,7 @@ import '../../css/footer.css';
 
 export const Footer = props => {
   return (
-    <footer className="footer">
+    <footer className="footer bckcolor">
       <div className="content has-text-centered">
         <p>
           <strong>Bulma</strong> by{' '}

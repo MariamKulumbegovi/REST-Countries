@@ -1,1 +1,1 @@
-export { getUserList } from './UserService';
+export { getNews } from './NewsService';

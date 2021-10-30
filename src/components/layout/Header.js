@@ -22,9 +22,6 @@ export const Header = () => {
   const renderUser = () => {
     return (
       <div className="buttons">
-        <NavLink className="navbar-item button" to={route.MAINUSER_PATH}>
-          Main User
-        </NavLink>
         <button className="button is-danger" onClick={logOut}>
           Log Out
         </button>
@@ -33,7 +30,7 @@ export const Header = () => {
   };
 
   return (
-    <div className="">
+    <div className="bckcolor">
       <nav className="navbar" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
           <Link className="navbar-item" to="/">
@@ -59,38 +56,9 @@ export const Header = () => {
 
         <div id="navbarBasicExample" className="navbar-menu">
           <div className="navbar-start">
-            <NavLink className="navbar-item" to={route.HOME_PATH}>
-              Home
+            <NavLink className="navbar-item" to={route.NEWS_PATH}>
+              News
             </NavLink>
-            <NavLink className="navbar-item" to={route.COUNTER_PATH}>
-              Counter
-            </NavLink>
-
-            <NavLink className="navbar-item" to={route.ASKQUESTION_PATH}>
-              Ask a Question (this page is protected)
-            </NavLink>
-
-            <div className="navbar-item has-dropdown is-hoverable">
-              <NavLink className="navbar-link" to="#">
-                More
-              </NavLink>
-
-              <div className="navbar-dropdown">
-                <NavLink className="navbar-item" to="#">
-                  About
-                </NavLink>
-                <NavLink className="navbar-item" to="#">
-                  Jobs
-                </NavLink>
-                <NavLink className="navbar-item" to="#">
-                  Contact
-                </NavLink>
-                <hr className="navbar-divider" />
-                <NavLink className="navbar-item" to="#">
-                  Report an issue
-                </NavLink>
-              </div>
-            </div>
           </div>
 
           <div className="navbar-end">

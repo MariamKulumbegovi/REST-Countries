@@ -8,7 +8,7 @@ import { AuthProvider } from './components/providers/AuthProvider';
 import axios from 'axios';
 import { ErrorBoundary } from './components/errorBoundary';
 
-axios.defaults.baseURL = process.env.REACT_APP_API_URL;
+axios.defaults.baseURL = process.env.REACT_APP_API;
 
 ReactDOM.render(
   <React.StrictMode>
