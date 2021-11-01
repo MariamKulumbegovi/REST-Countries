@@ -1,1 +1,1 @@
-export { withNews } from './withNews';
+

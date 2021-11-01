@@ -1,3 +1,3 @@
-export { default as News } from './News/News';
+export { News } from './News/News';
 export { LoginForm } from './authorization/login/LoginForm';
 export { Register } from './authorization/register/Register';
