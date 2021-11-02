@@ -11,9 +11,9 @@ export const UseNewsEverything = () => {
 
   useEffect(() => {
     fetch(
-      'https://newsapi.org/v2/everything?q=apple&q=bitcoin&' +
+      `${process.env.REACT_APP_API_URL_NEWS}q=apple&q=bitcoin&` +
         new URLSearchParams({
-          apiKey: 'c412962716b14ed9853ae3a5ef240781',
+          apiKey: process.env.REACT_APP_API_KEY,
           pageSize: 40,
         })
     )
