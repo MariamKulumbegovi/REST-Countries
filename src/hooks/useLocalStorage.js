@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useCallback } from 'react';
 import { getItem, saveItem } from '../helpers/LocalStorage';
 
 export const useLocalStorage = (key, initialValue) => {
@@ -12,14 +13,16 @@ export const useLocalStorage = (key, initialValue) => {
     }
   });
 
-  const setValue = newValue => {
+  const setValue =useCallback( newValue => {
     try {
       const valueSet =
         newValue instanceof Function ? newValue(storedValue) : newValue;
       setStoredValue(valueSet);
       saveItem(key, valueSet);
     } catch (error) {}
-  };
+  },
+  [key,storedValue]
+  )
 
   return [storedValue, setValue];
 };

@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { withUserList } from '../../hoc';
+import css from './AskQuestion.module.css'
 
 const AskQuestion = ({ userList }) => {
   useEffect(() => {}, [userList]);
@@ -11,7 +12,7 @@ const AskQuestion = ({ userList }) => {
           return (
             <div className="column box is-one-third" key={item.id}>
               <img src={item.avatar} width="30%" height="30px" />
-              <strong className="mx-2">
+              <strong className={ `red mx-4`}>
                 {item.first_name} {item.last_name}
               </strong>
             </div>
