@@ -30,8 +30,8 @@ export const Header = () => {
   };
 
   return (
-    <div className="bckcolor">
-      <nav className="navbar" role="navigation" aria-label="main navigation">
+    <div className="bckcolor ">
+      <nav className="navbar fixed" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
           <Link className="navbar-item" to="/">
             <img

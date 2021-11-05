@@ -8,8 +8,6 @@ import { AuthProvider } from './components/providers/AuthProvider';
 import axios from 'axios';
 import { ErrorBoundary } from './components/errorBoundary';
 
-
-
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
