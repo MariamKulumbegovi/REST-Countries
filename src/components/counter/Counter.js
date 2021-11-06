@@ -5,6 +5,7 @@ import { CounterValue } from './CounterValue';
 import CounterTitle from './CounterTitle';
 import { useLocalStorage } from '../../hooks';
 import CounterAction from './CounterAction';
+import { Button } from '../Elements/Button';
 
 export const Counter = ({ initialValue }) => {
   const [count, Setcount] = useLocalStorage('Counter', initialValue);
@@ -53,6 +54,11 @@ export const Counter = ({ initialValue }) => {
           <button className="button mx-2 is-info " onClick={() => United(-10)}>
             -10
           </button>
+          <Button
+            className="button mx-2 is-info "
+            onClick={() => United(+10)}
+            label="+10"
+          />
         </div>
       </div>
     </div>

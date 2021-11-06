@@ -45,12 +45,18 @@ export const PasswordInput = () => {
           <i className="fas fa-lock"></i>
         </span>
         {!passwordError && password && (
-          <span className="icon is-small is-right" data-testid={TEST_IDS.passwordinput.success}>
+          <span
+            className="icon is-small is-right"
+            data-testid={TEST_IDS.passwordinput.success}
+          >
             <i className="fas fa-check"></i>
           </span>
         )}
         {passwordError && password && (
-          <span className="icon is-small is-right" data-testid={TEST_IDS.passwordinput.error}>
+          <span
+            className="icon is-small is-right"
+            data-testid={TEST_IDS.passwordinput.error}
+          >
             <i className="fas fa-exclamation-triangle"></i>
           </span>
         )}

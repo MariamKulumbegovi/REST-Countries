@@ -4,6 +4,29 @@ import * as route from './constants/routes';
 import { SecurePage } from './components/Elements';
 import CounterPage from './pages/counter/CounterPage';
 import MainUserPage from './pages/MainUser/MainUserPage';
+import { Products, TopProducts } from './pages/Products';
+
+const routes = [
+  {
+    path: route.PRODUCTS_PATH,
+    component: Products,
+    routes: [
+      {
+        path: route.TOP_PRODUCTS_PATH,
+        component: TopProducts,
+      },
+    ],
+  },
+];
+
+export const RouteWithSubRoutes = ({ route }) => {
+  return (
+    <Route
+      path={route.path}
+      render={props => <route.component {...props} routes={route.routes} />}
+    />
+  );
+};
 
 export const Routes = () => {
   return (
@@ -26,6 +49,9 @@ export const Routes = () => {
       <Route path={route.MAINUSER_PATH}>
         <MainUserPage />
       </Route>
+      {routes.map((route, i) => (
+        <RouteWithSubRoutes key={i} route={route} />
+      ))}
     </Switch>
   );
 };

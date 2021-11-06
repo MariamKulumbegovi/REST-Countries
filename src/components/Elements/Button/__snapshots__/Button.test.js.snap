@@ -1,55 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EmailInput snapshots Component snap 1`] = `
+exports[`testing button button snapshot should render correct props 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
-      <p
-        class="control has-icons-left has-icons-right"
+      <button
+        class="className"
+        data-testid="button"
       >
-        <input
-          class="input "
-          data-testid="inputelement"
-          name="email"
-          placeholder="Email"
-          required=""
-          type="email"
-          value=""
-        />
-        <span
-          class="icon is-small is-left"
-        >
-          <i
-            class="fas fa-envelope"
-          />
-        </span>
-        
-      </p>
+        label
+      </button>
     </div>
   </body>,
   "container": <div>
-    <p
-      class="control has-icons-left has-icons-right"
+    <button
+      class="className"
+      data-testid="button"
     >
-      <input
-        class="input "
-        data-testid="inputelement"
-        name="email"
-        placeholder="Email"
-        required=""
-        type="email"
-        value=""
-      />
-      <span
-        class="icon is-small is-left"
-      >
-        <i
-          class="fas fa-envelope"
-        />
-      </span>
-      
-    </p>
+      label
+    </button>
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],

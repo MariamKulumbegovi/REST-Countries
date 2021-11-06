@@ -62,6 +62,9 @@ export const Header = () => {
             <NavLink className="navbar-item" to={route.HOME_PATH}>
               Home
             </NavLink>
+            <NavLink className="navbar-item" to={route.PRODUCTS_PATH}>
+              Products
+            </NavLink>
             <NavLink className="navbar-item" to={route.COUNTER_PATH}>
               Counter
             </NavLink>
