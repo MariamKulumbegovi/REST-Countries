@@ -1,5 +1,4 @@
 import { useContext } from 'react';
-import '../../css/header.css';
 import { Link, NavLink } from 'react-router-dom';
 import * as route from '../../constants/routes';
 import { AuthContext } from '../providers/AuthProvider';
@@ -22,9 +21,6 @@ export const Header = () => {
   const renderUser = () => {
     return (
       <div className="buttons">
-        <NavLink className="navbar-item button" to={route.MAINUSER_PATH}>
-          Main User
-        </NavLink>
         <button className="button is-danger" onClick={logOut}>
           Log Out
         </button>
@@ -65,35 +61,13 @@ export const Header = () => {
             <NavLink className="navbar-item" to={route.PRODUCTS_PATH}>
               Products
             </NavLink>
-            <NavLink className="navbar-item" to={route.COUNTER_PATH}>
-              Counter
-            </NavLink>
+           
 
             <NavLink className="navbar-item" to={route.ASKQUESTION_PATH}>
               Users(this page is protected)
             </NavLink>
 
-            <div className="navbar-item has-dropdown is-hoverable">
-              <NavLink className="navbar-link" to="#">
-                More
-              </NavLink>
-
-              <div className="navbar-dropdown">
-                <NavLink className="navbar-item" to="#">
-                  About
-                </NavLink>
-                <NavLink className="navbar-item" to="#">
-                  Jobs
-                </NavLink>
-                <NavLink className="navbar-item" to="#">
-                  Contact
-                </NavLink>
-                <hr className="navbar-divider" />
-                <NavLink className="navbar-item" to="#">
-                  Report an issue
-                </NavLink>
-              </div>
-            </div>
+            
           </div>
 
           <div className="navbar-end">

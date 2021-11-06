@@ -3,7 +3,6 @@ import { Switch } from "react-router"
 import { Link } from "react-router-dom"
 import { TOP_PRODUCTS_PATH } from "../../constants/routes"
 import styles from './Products.module.css'
-import axios from "axios"
 export const Products= ({routes})=>{
   
     return (
