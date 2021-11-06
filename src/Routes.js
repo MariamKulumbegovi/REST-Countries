@@ -7,6 +7,10 @@ import MainUserPage from './pages/MainUser/MainUserPage';
 import { Products, TopProducts } from './pages/Products';
 
 const routes = [
+  { 
+    path: route.HOME_PATH, 
+    component: Home, 
+    exact: true },
   {
     path: route.PRODUCTS_PATH,
     component: Products,
@@ -17,12 +21,31 @@ const routes = [
       },
     ],
   },
+  {
+    path:route.LOGIN_PATH,
+    component:LoginForm
+  },
+  {
+    path:route.REGISTER_PATH,
+    component:Register
+  },
+  {
+    path:route.COUNTER_PATH,
+    component:CounterPage
+  },
+  {
+    path:route.MAINUSER_PATH,
+    component:MainUserPage
+  },
+  
+  
 ];
 
 export const RouteWithSubRoutes = ({ route }) => {
   return (
     <Route
       path={route.path}
+      exact={route.exact}
       render={props => <route.component {...props} routes={route.routes} />}
     />
   );
@@ -31,27 +54,13 @@ export const RouteWithSubRoutes = ({ route }) => {
 export const Routes = () => {
   return (
     <Switch>
-      <Route path={route.HOME_PATH} exact>
-        <Home />
-      </Route>
-      <Route path={route.LOGIN_PATH}>
-        <LoginForm />
-      </Route>
-      <Route path={route.REGISTER_PATH}>
-        <Register />
-      </Route>
       <Route path={route.ASKQUESTION_PATH}>
         <SecurePage Component={AskQuestion} />
       </Route>
-      <Route path={route.COUNTER_PATH}>
-        <CounterPage />
-      </Route>
-      <Route path={route.MAINUSER_PATH}>
-        <MainUserPage />
-      </Route>
-      {routes.map((route, i) => (
-        <RouteWithSubRoutes key={i} route={route} />
-      ))}
+     
+      {routes.map((route, i) => {
+        return <RouteWithSubRoutes key={i} route={route} {...route} />;
+      })}
     </Switch>
   );
 };

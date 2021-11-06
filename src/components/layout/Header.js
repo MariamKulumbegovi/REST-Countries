@@ -70,7 +70,7 @@ export const Header = () => {
             </NavLink>
 
             <NavLink className="navbar-item" to={route.ASKQUESTION_PATH}>
-              Ask a Question (this page is protected)
+              Users(this page is protected)
             </NavLink>
 
             <div className="navbar-item has-dropdown is-hoverable">
