@@ -1,10 +1,16 @@
 import '../../../App.css';
-import { Redirect } from 'react-router';
-import { HOME_PATH } from '../../../constants/routes';
+import { Redirect, Route } from 'react-router';
 import { useAuthContext } from '../../providers/AuthProvider';
+import { LOGIN_PATH } from '../../../constants/routes';
 
-export const SecurePage = ({ Component, ...props }) => {
+export const SecurePage = ({ Component, ...rest }) => {
   const { loggedIn } = useAuthContext();
-
-  return loggedIn ? <Component {...props} /> : <Redirect to={HOME_PATH} />;
+  return (
+    <Route
+      {...rest}
+      render={props =>
+        loggedIn ? <Component {...props} /> : <Redirect to={LOGIN_PATH} />
+      }
+    />
+  );
 };

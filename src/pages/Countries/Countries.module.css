@@ -1,0 +1,18 @@
+.blue {
+  color: rgb(20, 20, 175) !important;
+}
+.red {
+  color: rgb(192, 23, 23);
+}
+.white {
+  color: #ffff;
+}
+.dropdown {
+
+  background: white;
+  width: fit-content;
+}
+.flag {
+  max-width: 400px;
+  width: 100%;
+}

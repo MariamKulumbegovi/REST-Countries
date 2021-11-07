@@ -6,7 +6,7 @@ import {
   removeItem,
   saveItem,
 } from '../../../helpers/LocalStorage';
-import { ASKQUESTION_PATH } from '../../../constants/routes';
+import { COUNTRIES_PATH, LOGIN_PATH } from '../../../constants/routes';
 export const AuthContext = React.createContext(null);
 
 AuthContext.displayName = 'AuthContext';
@@ -17,12 +17,13 @@ export const AuthProvider = ({ children }) => {
   const logOut = () => {
     removeItem(AUTH_TOKEN);
     setLoggedIn(false);
+    history.replace(LOGIN_PATH);
   };
   const history = useHistory();
   const logIn = token => {
     setLoggedIn(true);
     saveItem(AUTH_TOKEN, token);
-    history.replace(ASKQUESTION_PATH);
+    history.replace(COUNTRIES_PATH);
   };
 
   return (

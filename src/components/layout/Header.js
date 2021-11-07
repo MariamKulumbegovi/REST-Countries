@@ -2,28 +2,43 @@ import { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import * as route from '../../constants/routes';
 import { AuthContext } from '../providers/AuthProvider';
-
+import Earth from '../../img/earth.png';
+import styles from './Header.module.css';
 export const Header = () => {
   const { loggedIn, logOut } = useContext(AuthContext);
 
   const renderGuest = () => {
     return (
-      <div className="buttons">
-        <NavLink className="button is-danger" to={route.REGISTER_PATH}>
-          <strong>Sign up</strong>
-        </NavLink>
-        <NavLink className=" button is-dark" to={route.LOGIN_PATH}>
-          Log in
-        </NavLink>
+      <div className="navbar-menu is-justify-content-flex-end pr-4">
+        <div className="buttons justify-content-flex-end">
+          <NavLink className="button is-danger" to={route.REGISTER_PATH}>
+            <strong>Sign up</strong>
+          </NavLink>
+          <NavLink className=" button is-dark" to={route.LOGIN_PATH}>
+            Log in
+          </NavLink>
+        </div>
       </div>
     );
   };
   const renderUser = () => {
     return (
-      <div className="buttons">
-        <button className="button is-danger" onClick={logOut}>
-          Log Out
-        </button>
+      <div className="navbar-menu is-justify-content-space-between pr-4">
+        <div className=" is-flex">
+          <NavLink className="navbar-item" to={route.PRODUCTS_PATH}>
+            Products
+          </NavLink>
+
+          <NavLink className="navbar-item" to={route.COUNTRIES_PATH}>
+            Countries
+          </NavLink>
+        </div>
+
+        <div className="buttons">
+          <button className="button is-danger" onClick={logOut}>
+            Log Out
+          </button>
+        </div>
       </div>
     );
   };
@@ -33,11 +48,7 @@ export const Header = () => {
       <nav className="navbar" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
           <Link className="navbar-item" to="/">
-            <img
-              src="https://bulma.io/images/bulma-logo.png"
-              width="112"
-              height="28"
-            />
+            <img src={Earth} width="auto" height="auto" />
           </Link>
 
           <a
@@ -54,27 +65,7 @@ export const Header = () => {
         </div>
 
         <div id="navbarBasicExample" className="navbar-menu">
-          <div className="navbar-start">
-            <NavLink className="navbar-item" to={route.HOME_PATH}>
-              Home
-            </NavLink>
-            <NavLink className="navbar-item" to={route.PRODUCTS_PATH}>
-              Products
-            </NavLink>
-           
-
-            <NavLink className="navbar-item" to={route.ASKQUESTION_PATH}>
-              Users(this page is protected)
-            </NavLink>
-
-            
-          </div>
-
-          <div className="navbar-end">
-            <div className="navbar-item">
-              {loggedIn ? renderUser() : renderGuest()}
-            </div>
-          </div>
+          {loggedIn ? renderUser() : renderGuest()}
         </div>
       </nav>
     </div>
