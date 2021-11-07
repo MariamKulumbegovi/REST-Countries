@@ -1,25 +1,22 @@
 import { useFetch } from '../../../hooks/useFetch';
 import styles from '../Countries.module.css'
-export const Asia = () => {
-  const res = useFetch(`https://restcountries.com/v3.1/all`, {});
+import { withCountries } from '../../../hoc/withCountries';
+// import Pagination from '../../../components/Elements/pagination/Pagination';
 
-  if (res.loading) {
-    return <div>Loading...</div>;
-  } else if (!res.data) {
-    return <div>{console.error(res.error)}</div>;
-  }
-  const data=res.data
+
+ const Asia = ({ countries}) => {
   
-  {data.map(item=>{
+  {countries.map(item=>{
     if(item.region==`Asia`){
         return console.log(item)
   }})}
+
 
  return (
 
     <div>
         <div className="content">
-        {data.map(item=>{
+        { countries.map(item=>{
             if(item.region==`Asia`){
                 return( <div className="box is-flex is-justify-content-space-between" key={item.name.official}> 
                             <div>
@@ -41,6 +38,9 @@ export const Asia = () => {
             }
         })}
         </div>
+
     </div>
  )
 };
+
+export default withCountries(Asia)
