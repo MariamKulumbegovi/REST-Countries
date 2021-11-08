@@ -8,11 +8,42 @@
   color: #ffff;
 }
 .dropdown {
-
   background: white;
   width: fit-content;
 }
 .flag {
   max-width: 400px;
+  width: 100%;
+}
+.bckcolor {
+  background: rgb(149, 52, 52);
+  background: radial-gradient(
+    circle,
+    rgba(149, 52, 52, 1) 0%,
+    rgba(9, 9, 37, 0.6085784655659139) 47%,
+    rgba(51, 51, 57, 1) 100%
+  );
+}
+.mb40 {
+  background-color: #ffff;
+  margin-bottom: 40px;
+}
+.mb40 > li {
+  border: 1px solid #ddd; /* Gray */
+  padding: 5px;
+  margin: 10px;
+}
+.mb40 > li:hover {
+  background-color: rgb(157, 157, 179);
+}
+.mb40 > li:active {
+  background-color: cornflowerblue;
+}
+.insidepag {
+  display: flex;
+  justify-content: center;
+
+  max-width: 500px;
+
   width: 100%;
 }

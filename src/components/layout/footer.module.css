@@ -1,14 +1,4 @@
-.space-between {
-  display: flex;
-}
-.flex-end {
-  display: flex;
-  justify-content: flex-end;
-}
-.full-width {
-  width: 100% !important;
-}
-.navbar-color {
+.bck-color {
   background: rgb(255, 255, 255);
   background: radial-gradient(
     circle,

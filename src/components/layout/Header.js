@@ -29,7 +29,7 @@ export const Header = () => {
             Products
           </NavLink>
 
-          <NavLink className="navbar-item" to={route.COUNTRIES_PATH}>
+          <NavLink className="navbar-item" to={route.ALL_COUNTRIES_PATH}>
             Countries
           </NavLink>
         </div>
@@ -45,7 +45,11 @@ export const Header = () => {
 
   return (
     <div className="">
-      <nav className="navbar" role="navigation" aria-label="main navigation">
+      <nav
+        className={`navbar ${styles[`navbar-color`]}`}
+        role="navigation"
+        aria-label="main navigation"
+      >
         <div className="navbar-brand">
           <Link className="navbar-item" to="/">
             <img src={Earth} width="auto" height="auto" />

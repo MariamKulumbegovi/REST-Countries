@@ -1,5 +1,4 @@
 .content {
-  background-color: rgb(87, 80, 80);
   padding: 20px;
 }
 .flex {
@@ -7,7 +6,13 @@
   flex-direction: column;
   justify-content: space-between;
   height: 100vh;
-  background-color: rgb(87, 80, 80);
+  background: rgb(149, 52, 52);
+  background: radial-gradient(
+    circle,
+    rgba(149, 52, 52, 1) 0%,
+    rgba(9, 9, 37, 0.6085784655659139) 47%,
+    rgba(51, 51, 57, 1) 100%
+  );
 }
 .content .h1 {
   color: rgb(197, 197, 197);

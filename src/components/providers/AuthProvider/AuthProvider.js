@@ -6,7 +6,11 @@ import {
   removeItem,
   saveItem,
 } from '../../../helpers/LocalStorage';
-import { COUNTRIES_PATH, LOGIN_PATH } from '../../../constants/routes';
+import {
+  ALL_COUNTRIES_PATH,
+  COUNTRIES_PATH,
+  LOGIN_PATH,
+} from '../../../constants/routes';
 export const AuthContext = React.createContext(null);
 
 AuthContext.displayName = 'AuthContext';
@@ -23,7 +27,7 @@ export const AuthProvider = ({ children }) => {
   const logIn = token => {
     setLoggedIn(true);
     saveItem(AUTH_TOKEN, token);
-    history.replace(COUNTRIES_PATH);
+    history.replace(ALL_COUNTRIES_PATH);
   };
 
   return (
