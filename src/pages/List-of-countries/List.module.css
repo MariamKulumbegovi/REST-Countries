@@ -1,19 +1,9 @@
-.blue {
-  color: rgb(20, 20, 175) !important;
-}
-.red {
-  color: rgb(192, 23, 23);
-}
 .white {
   color: #ffff;
 }
-.dropdown {
-  background: white;
-  width: fit-content;
-}
-.flag {
-  max-width: 400px;
-  width: 100%;
+.marginauto {
+  margin: auto;
+  color: #ffff;
 }
 .bckcolor {
   background: rgb(149, 52, 52);
@@ -22,8 +12,16 @@
     rgba(149, 52, 52, 1) 0%,
     rgba(9, 9, 37, 0.6085784655659139) 47%,
     rgba(51, 51, 57, 1) 100%
+    
   );
-  margin-bottom: 0 !important;
+  margin-bottom:0 !important;
+}
+.th {
+  color: rgb(180, 30, 30) !important;
+}
+.tableback {
+  background: rgb(219,219,245);
+background: radial-gradient(circle, rgba(219,219,245,1) 0%, rgba(186,186,209,1) 35%, rgba(134,134,153,0.6085784655659139) 100%);
 }
 .container {
   width: 500px;

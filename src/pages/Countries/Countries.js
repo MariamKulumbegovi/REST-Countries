@@ -1,215 +1,148 @@
-import { Route, Switch } from 'react-router';
-import { Link } from 'react-router-dom';
-import {
-  AFRICA_PATH,
-  AMERICAS_PATH,
-  ASIA_PATH,
-  EUROPE_PATH,
-  OCEANIA_PATH,
-  ALL_COUNTRIES_PATH,
-} from '../../constants/routes';
-import {
-  Africa,
-  Americas,
-  Asia,
-  Oceania,
-  Europe,
-  AllCountries,
-} from './CountriesByContinents';
+import PropTypes from 'prop-types';
 import styles from './Countries.module.css';
+import { useState, useEffect, memo } from 'react';
+import { useFetch } from '../../hooks/useFetch';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { UseModal } from '../../hooks/UseModal';
 
-export const Countries = () => {
+export const Countries = ({ initialValue }) => {
+  const [q, setQ] = useState('');
+  const [searchParam] = useState(['altSpellings']);
+
+  const [filterParam, setFilterParam] = useLocalStorage('Region', initialValue);
+
+  const result = useFetch(`https://restcountries.com/v3.1/all`);
+  useEffect(() => {}, [setQ, setFilterParam]);
+  const items = result.data;
+
+  //scroll to top button
+  const [showButton, setShowButton] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        setShowButton(true);
+      } else {
+        setShowButton(false);
+      }
+    });
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
+  //scroll to top button
+
+  useEffect(() => {}, [search]);
+  if (result.loading) {
+    return <pre>Loading...</pre>;
+  }
+  if (!result.data) {
+    return <code>Error</code>;
+  }
+
+  console.log(items, 'items');
+
+  function search(items) {
+    return items.filter(item => {
+      if (item.region == filterParam) {
+        return searchParam.some(newItem => {
+          return (
+            item[newItem].toString().toLowerCase().indexOf(q.toLowerCase()) > -1
+          );
+        });
+      } else if (filterParam == 'All') {
+        return searchParam.some(newItem => {
+          return (
+            item[newItem].toString().toLowerCase().indexOf(q.toLowerCase()) > -1
+          );
+        });
+      }
+    });
+  }
+
   return (
-    <div className={`container is-fluid    ${styles[`bckcolor`]}`}>
-      <div>
+    <div className={`content ${styles[`bckcolor`]}`}>
+      <div className="search-wrapper">
+        <label htmlFor="search-form">
+          <input
+            type="search"
+            name="search-form"
+            id="search-form"
+            className="search-input input"
+            placeholder="Search for..."
+            value={q}
+            onChange={e => setQ(e.target.value)}
+          />
+          <span className="sr-only">Search countries here</span>
+        </label>
+        <div className="select mt-5 mb-5">
+          <select
+            onChange={e => {
+              setFilterParam(e.target.value);
+            }}
+            className="custom-select"
+            aria-label="Filter Countries By Countries"
+          >
+            <option value="All">Filter By Region</option>
+            <option value="All">All</option>
+            <option value="Africa">Africa</option>
+            <option value="Americas">America</option>
+            <option value="Asia">Asia</option>
+            <option value="Europe">Europe</option>
+            <option value="Oceania">Oceania</option>
+          </select>
+          <span className="focus"></span>
+        </div>
+      </div>
+
+      {search(items).map(item => (
         <div
-          className={`navbar-item has-dropdown is-hoverable mt-6 ${
-            styles[`dropdown`]
-          }`}
+          className="box is-flex is-justify-content-space-between"
+          key={item.name.official}
         >
-          <Link to={ALL_COUNTRIES_PATH} className="navbar-link">
-            Continents
-          </Link>
-
-          <div className="navbar-dropdown">
-            <Link className="navbar-item" to={EUROPE_PATH}>
-              Europe
-            </Link>
-            <Link className="navbar-item" to={ASIA_PATH}>
-              Asia
-            </Link>
-            <Link className="navbar-item" to={AMERICAS_PATH}>
-              Americas
-            </Link>
-            <Link className="navbar-item" to={OCEANIA_PATH}>
-              Oceania
-            </Link>
-            <Link className="navbar-item" to={AFRICA_PATH}>
-              Africa
-            </Link>
-          </div>
           <div>
-            <Link className="navbar-item" to={ALL_COUNTRIES_PATH}>
-              All
-            </Link>
+            <div>
+              <h1>{item.name.official}</h1>
+            </div>
+            <div>Common name- {item.name.common} </div>
+            <div>Capital- {item.capital} </div>
+            <div>Population- {item.population} </div>
+            <div>Region- {item.region} </div>
+            <div>Timezones- {item.timezones} </div>
+            <div className="mt-2">
+                     <UseModal data={item} />
+             </div>
+          </div>
+
+          <div>
+            <img className={styles.flag} src={item.flags.svg} height="auto" />
           </div>
         </div>
-
-        <div>
-          <Switch>
-            <Route path={ALL_COUNTRIES_PATH} component={AllCountries} />
-            <Route path={EUROPE_PATH} component={Europe} />
-            <Route path={ASIA_PATH} component={Asia} />
-            <Route path={AMERICAS_PATH} component={Americas} />
-            <Route path={OCEANIA_PATH} component={Oceania} />
-            <Route path={AFRICA_PATH} component={Africa} />
-          </Switch>
+      ))}
+      <div>
+        <div className={styles.container}>
+          <div className={(styles.box, styles.box1)}></div>
+          <div className={(styles.box, styles.box2)}></div>
+          <div className={(styles.box, styles.box3)}></div>
+          <div className={(styles.box, styles.box4)}></div>
+          <div className={(styles.box, styles.box5)}></div>
         </div>
+        {showButton && (
+          <button onClick={scrollToTop} className={styles.backtotop}>
+            &#8679;
+          </button>
+        )}
       </div>
     </div>
   );
 };
 
-//   function PaginatedItems({ itemsPerPage }) {
-//     // We start with an empty list of items.
-//     const [currentItems, setCurrentItems] = useState(null);
-//     const [pageCount, setPageCount] = useState(0);
-//     // Here we use item offsets; we could also use page offsets
-//     // following the API or data you're working with.
-//     const [itemOffset, setItemOffset] = useState(0);
 
-//     useEffect(() => {
-
-//       const endOffset = itemOffset + itemsPerPage;
-//       console.log(`Loading items from ${itemOffset} to ${endOffset}`);
-//       setCurrentItems(items.slice(itemOffset, endOffset));
-//       setPageCount(Math.ceil(items.length / itemsPerPage));
-//     }, [itemOffset, itemsPerPage]);
-
-//     // Invoke when user click to request another page.
-//     const handlePageClick = event => {
-//       const newOffset = (event.selected * itemsPerPage) % items.length;
-//       console.log(
-//         `User requested page number ${event.selected}, which is offset ${newOffset}`
-//       );
-//       setItemOffset(newOffset);
-//     };
-
-//     return (
-//       <>
-//         <Items currentItems={currentItems} />
-//         <ReactPaginate
-//           breakLabel="..."
-//           nextLabel="next >"
-//           onPageChange={handlePageClick}
-//           pageRangeDisplayed={5}
-//           pageCount={pageCount}
-//           previousLabel="< previous"
-//           renderOnZeroPageCount={null}
-//           className="pagination-link  pagination is-flex is-justify-content-space-evenly backWhite"
-//         />
-//       </>
-//     );
-//   }
-//   return (
-//     <>
-//       <PaginatedItems itemsPerPage={5} />
-//     </>
-//   );
-
-// }
-
-// }
-
-// import React, { useEffect, useState } from 'react';
-// import ReactPaginate from 'react-paginate';
-// import { useFetch } from "../../hooks/useFetch"
-// import styles from './Countries.module.css'
-// import Asia from './CountriesByContinents/Asia';
-
-// export const Countries = () => {
-
-//   const [error, setError] = useState(null);
-//   const [isLoaded, setIsLoaded] = useState(false);
-//   const [q, setQ] = useState('');
-//   const [searchParam] = useState(['continents']);
-//     const [filterParam, setFilterParam] = useState(['all'])
-
-//   const result=useFetch(`https://restcountries.com/v3.1/all`)
-//  const items=result.data
-//   if (!result.data) {
-//         return <div>...Loading</div>
-//       }
-
-// console.log(items,"items")
-//   function Items({ currentItems }) {{
-
-//       return (
-//         <div className="content">
-
-//           { currentItems &&
-//            (currentItems).map(item => (
-//                           <div className="box is-flex is-justify-content-space-between" key={item.name.official}>
-//                                 <div>
-//                                 <div><h1>{item.name.official}</h1></div>
-//                                 <div>Common name- {item.name.common} </div>
-//                                 <div>Capital- {item.capital} </div>
-//                                 <div>Population- {item.population} </div>
-//                                 <div>Region- {item.region} </div>
-//                                 <div>Timezones- {item.timezones} </div>
-//                                 </div>
-
-//                                 <div><img className={styles.flag} src={item.flags.svg}  height="auto" /></div>
-
-//                              </div>
-
-//            ))}
-//         </div>
-//       );
-//     }
-//   }
-
-//   function PaginatedItems({ itemsPerPage }) {
-//     const [currentItems, setCurrentItems] = useState(null);
-//     const [pageCount, setPageCount] = useState(0);
-//     const [itemOffset, setItemOffset] = useState(0);
-
-//     useEffect(() => {
-
-//       const endOffset = itemOffset + itemsPerPage;
-//       console.log(`Loading items from ${itemOffset} to ${endOffset}`);
-//       setCurrentItems(items.slice(itemOffset, endOffset));
-//       setPageCount(Math.ceil(items.length / itemsPerPage));
-//     }, [itemOffset, itemsPerPage]);
-
-//     const handlePageClick = event => {
-//       const newOffset = (event.selected * itemsPerPage) % items.length;
-//       console.log(
-//         `User requested page number ${event.selected}, which is offset ${newOffset}`
-//       );
-//       setItemOffset(newOffset);
-//     };
-
-//     return (
-//       <>
-//         <Items currentItems={currentItems} />
-//         <ReactPaginate
-//           breakLabel="..."
-//           nextLabel="next >"
-//           onPageChange={handlePageClick}
-//           pageRangeDisplayed={5}
-//           pageCount={pageCount}
-//           previousLabel="< previous"
-//           renderOnZeroPageCount={null}
-//           className="pagination-link  pagination is-flex is-justify-content-space-evenly backWhite"
-//         />
-//       </>
-//     );
-//   }
-//   return (
-//     <>
-//       <PaginatedItems itemsPerPage={5} />
-//     </>
-//   );
-
-//   }
+Countries.defaultProps = {
+  initialValue: 'All',
+};

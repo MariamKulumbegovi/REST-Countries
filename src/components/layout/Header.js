@@ -25,11 +25,11 @@ export const Header = () => {
     return (
       <div className="navbar-menu is-justify-content-space-between pr-4">
         <div className=" is-flex">
-          <NavLink className="navbar-item" to={route.PRODUCTS_PATH}>
-            Products
+          <NavLink className="navbar-item" to={route.LIST_PATH}>
+            List
           </NavLink>
 
-          <NavLink className="navbar-item" to={route.ALL_COUNTRIES_PATH}>
+          <NavLink className="navbar-item" to={route.COUNTRIES_PATH}>
             Countries
           </NavLink>
         </div>

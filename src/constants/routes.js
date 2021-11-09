@@ -1,11 +1,5 @@
 export const COUNTRIES_PATH = '/countries';
 export const LOGIN_PATH = '/login';
 export const REGISTER_PATH = '/register';
-export const PRODUCTS_PATH = '/products';
-export const TOP_PRODUCTS_PATH = '/products/top';
-export const EUROPE_PATH = '/countries/europe';
-export const ASIA_PATH = '/countries/asia';
-export const AMERICAS_PATH = '/countries/americas';
-export const AFRICA_PATH = '/countries/africa';
-export const OCEANIA_PATH = '/countries/oceania';
-export const ALL_COUNTRIES_PATH = '/countries/all';
+export const LIST_PATH = '/list';
+export const DETAILED_INFO_PATH = '/list/detailedinfo';
