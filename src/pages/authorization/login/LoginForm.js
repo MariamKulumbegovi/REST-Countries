@@ -1,7 +1,7 @@
 import { useAuthContext } from '../../../components/providers/AuthProvider';
 import { EmailInput, PasswordInput } from '../../../components/Elements';
 import { login } from '../../../services/AuthService';
-
+import '../../../App.css'
 export const LoginForm = () => {
   const { logIn } = useAuthContext();
 
@@ -20,7 +20,7 @@ export const LoginForm = () => {
   };
 
   return (
-    <form className="content" onSubmit={onSubmit}>
+    <form className="content mt60" onSubmit={onSubmit}>
       <code>"email": "eve.holt@reqres.in", "password": "cityslicka"</code>
       <div className="field">
         <EmailInput />

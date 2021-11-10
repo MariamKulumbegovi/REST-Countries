@@ -43,7 +43,7 @@ export const Register = () => {
   };
   const register = () => {
     return (
-      <form className="content" onSubmit={onSubmit}>
+      <form className="content mt60" onSubmit={onSubmit}>
         <code>"email": "eve.holt@reqres.in", " password": "pistol"</code>
         <div className="field">
           <EmailInput />
