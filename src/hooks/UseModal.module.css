@@ -1,6 +1,17 @@
 .aligncenter {
     text-align: center;
+    text-emphasis:initial;
+   
 }
-.scroll {
-    overflow-y: scroll;
+.textcenter {
+text-align: center;
+text-emphasis:initial;
+font-size: 25px !important;
+font:bolder;
+}
+.modalUl > li {
+    border: solid #a49797;
+    padding: 3px;
+    font-family:cursive;
+    font-size: 17px;
 }

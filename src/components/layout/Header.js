@@ -1,9 +1,11 @@
+import React from "react";
 import { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import * as route from '../../constants/routes';
 import { AuthContext } from '../providers/AuthProvider';
 import Earth from '../../img/earth.png';
 import styles from './Header.module.css';
+import SideBar from "../../components/Elements/sidebar/Sidebar";
 export const Header = () => {
   const { loggedIn, logOut } = useContext(AuthContext);
 
@@ -44,13 +46,14 @@ export const Header = () => {
   };
 
   return (
-    <div className="">
+    <div className={styles.fixed}>
       <nav
         className={`navbar ${styles[`navbar-color`]}`}
         role="navigation"
         aria-label="main navigation"
       >
         <div className="navbar-brand">
+       
           <Link className="navbar-item" to="/">
             <img src={Earth} width="auto" height="auto" />
           </Link>
@@ -65,7 +68,10 @@ export const Header = () => {
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
+
+            
           </a>
+         
         </div>
 
         <div id="navbarBasicExample" className="navbar-menu">

@@ -16,8 +16,10 @@ export const UseModal=({data})=>{
       top: '50%',
       left: '50%',
       transform: 'translate(-50%, -50%)',
-      width: 400,
-      height:'auto',
+      width: 'auto',
+      height:'100vh',
+      overflowY:'scroll',
+      overflowX:'hidden',
       bgcolor: 'background.paper',
       border: '2px solid #000',
       boxShadow: 24,
@@ -42,15 +44,32 @@ export const UseModal=({data})=>{
           }
       }
       const languages=()=>{
+        if (data.languages){
         const langs=data.languages
         const array=Object.values(langs)
-        return array
+        return <span>languages- {array}</span>
+    
+        }else if (!data.languages){
+          return <li></li>
+        }
+       
+      
       }
       const currency=()=>{
+
+        if (data.currencies){
           const curr=data.currencies
           const curs=curr[Object.keys(curr)[0]];
-          return <li>{curs.name}  {curs.symbol}</li>
+          return <li>Currency- {curs.name}  {curs.symbol}</li>
+    
+        }else if (!data.currencies){
+          return <li></li>
+        }
+          
       }
+     
+    
+     
       const unMembership=()=>{
           if(data.unMember==false){
               return <li>This country is not a member of UN</li>
@@ -71,25 +90,24 @@ export const UseModal=({data})=>{
           >
             <Box sx={style}>
               <Typography id="modal-modal-title" variant="h6" component="h2">
-               <h1> {data.name.official}  <img src={data.flags.svg} width="auto" height="auto"/></h1>
+               <h1 className={styles.textcenter}> <em> {data.name.official}</em>  <img src={data.flags.svg} width="auto" height="auto"/></h1>
               </Typography>
               <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                <div>
-                   <ul className={styles.scroll}>
+                   <ul className={styles.modalUl}>
+                      <li className={`is-flex-direction-column is-align-items-center box ${styles.textcenter}`}>
+                       <strong className={styles.aligncenter}>Coat of arms </strong>
+                       <img src={data.coatOfArms.svg} width="auto" height="auto" />
+                       </li>
                        <li>Area={data.area}km2</li>
                        <li>Borders-{data.borders}</li>
                        <li>Capital-{data.capital}</li>
                        <li>Car Side-{data.car.side}</li>
-                       <li className="is-flex-direction-column is-align-items-center box">
-                       <h4 className={styles.aligncenter}>Coat of arms </h4>
-                       <img src={data.coatOfArms.svg} width="auto" height="auto" />
-                       </li>
                        <li className="is-flex">Continent-{data.continents}</li>
-                       <li className="is-flex">Demonyms-{data.demonyms.eng.f}</li>
                        <li className="is-flex">Independent-{dependency()}</li>
                        <li className="is-flex">LandLocked(Partially recognized)-{landlocked()}</li>
-                       <li className="is-flex">languages-{languages()}</li>
-                       <li className="is-flex">Currency-{currency()}</li>
+                       <li className="is-flex">{languages()}</li>
+                       <li className="is-flex">{currency()}</li>
                        <li className="is-flex">Population-{data.population}</li>
                        <li className="is-flex">Region -{data.region}</li>
                        <li className="is-flex">Strart of week  -{data.startOfWeek}</li>
@@ -97,7 +115,7 @@ export const UseModal=({data})=>{
                        <li className="is-flex">Subregion  -{data.subregion}</li>
                        <li className="is-flex">Timezones  -{data.timezones}</li>
                        <li className="is-flex">UN membership-{unMembership()}</li>
-
+  
                       
                    </ul>
                </div>

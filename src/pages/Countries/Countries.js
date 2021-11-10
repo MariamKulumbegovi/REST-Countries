@@ -20,7 +20,7 @@ export const Countries = ({ initialValue }) => {
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 300) {
+      if (window.pageYOffset > 200 && window.pageXOffset >= 0) {
         setShowButton(true);
       } else {
         setShowButton(false);
