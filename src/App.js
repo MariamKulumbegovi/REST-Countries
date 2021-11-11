@@ -4,7 +4,7 @@ import { Routes } from './Routes';
 
 function App() {
   return (
-    <div className="flex 	">
+    <div className="flex has-navbar-fixed-top scrollbar	">
       <Header />
       <Routes />
       <Footer />

@@ -1,7 +1,7 @@
 import { useAuthContext } from '../../../components/providers/AuthProvider';
 import { EmailInput, PasswordInput } from '../../../components/Elements';
 import { login } from '../../../services/AuthService';
-import '../../../App.css'
+import '../../../App.css';
 export const LoginForm = () => {
   const { logIn } = useAuthContext();
 

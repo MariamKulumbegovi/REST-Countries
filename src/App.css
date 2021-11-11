@@ -1,3 +1,11 @@
+body {
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(215, 215, 247, 0.6085784655659139) 47%,
+    rgba(219, 219, 245, 1) 100%
+  );
+}
 .content {
   padding: 20px;
 }
@@ -28,4 +36,23 @@
 }
 .mt60 {
   margin-top: 80px;
+}
+body::-webkit-scrollbar {
+  width: 0.1px;
+}
+
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.scrollbar::-webkit-scrollbar {
+  width: 10px;
+}
+.scrollbar::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background: rgb(199, 67, 67);
+  outline: rgb(199, 67, 67);
 }

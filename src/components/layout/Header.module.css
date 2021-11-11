@@ -17,8 +17,12 @@
     rgba(219, 219, 245, 1) 100%
   );
 }
-.fixed {
+.show {
+  display: block;
+  height: 100vh;
+  background-color: rgba(215, 215, 247, 0.6085784655659139);
+}
+.earth {
   position: fixed;
-  width: 100%;
-  z-index:1000;
+  z-index: 6000;
 }

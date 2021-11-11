@@ -12,62 +12,23 @@
     rgba(149, 52, 52, 1) 0%,
     rgba(9, 9, 37, 0.6085784655659139) 47%,
     rgba(51, 51, 57, 1) 100%
-    
   );
-  margin-bottom:0 !important;
+  margin-bottom: 0 !important;
 }
 .th {
   color: rgb(180, 30, 30) !important;
 }
 .tableback {
-  background: rgb(219,219,245);
-background: radial-gradient(circle, rgba(219,219,245,1) 0%, rgba(186,186,209,1) 35%, rgba(134,134,153,0.6085784655659139) 100%);
+  background: rgb(219, 219, 245);
+  background: radial-gradient(
+    circle,
+    rgba(219, 219, 245, 1) 0%,
+    rgba(186, 186, 209, 1) 35%,
+    rgba(134, 134, 153, 0.6085784655659139) 100%
+  );
 }
 .container {
   width: 500px;
   margin: auto;
   text-align: center;
-}
-
-.backtotop {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  font-size: 100px;
-  background: rgb(173, 170, 163);
-  color: white;
-  cursor: pointer;
-  border-radius: 100px;
-  border: none;
-  box-shadow: 0 5px 10px #ccc;
-}
-
-.backtotop:hover {
-  background: red;
-}
-
-.box {
-  width: 100%;
-  height: 80vh;
-  margin: 30px 0;
-}
-
-.box1 {
-  background: yellow;
-}
-
-.box2 {
-  background: green;
-}
-
-.box3 {
-  background: pink;
-}
-
-.box4 {
-  background: grey;
-}
-
-.box5 {
-  background: purple;
 }

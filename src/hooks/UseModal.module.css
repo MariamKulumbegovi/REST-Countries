@@ -1,17 +1,16 @@
 .aligncenter {
-    text-align: center;
-    text-emphasis:initial;
-   
+  text-align: center;
+  text-emphasis: initial;
 }
 .textcenter {
-text-align: center;
-text-emphasis:initial;
-font-size: 25px !important;
-font:bolder;
+  text-align: center;
+  text-emphasis: initial;
+  font-size: 25px !important;
+  font: bolder;
 }
 .modalUl > li {
-    border: solid #a49797;
-    padding: 3px;
-    font-family:cursive;
-    font-size: 17px;
+  border: solid #a49797;
+  padding: 3px;
+  font-family: cursive;
+  font-size: 17px;
 }

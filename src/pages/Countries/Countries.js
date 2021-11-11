@@ -15,28 +15,6 @@ export const Countries = ({ initialValue }) => {
   useEffect(() => {}, [setQ, setFilterParam]);
   const items = result.data;
 
-  //scroll to top button
-  const [showButton, setShowButton] = useState(false);
-
-  useEffect(() => {
-    window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 200 && window.pageXOffset >= 0) {
-        setShowButton(true);
-      } else {
-        setShowButton(false);
-      }
-    });
-  }, []);
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
-
-  //scroll to top button
-
   useEffect(() => {}, [search]);
   if (result.loading) {
     return <pre>Loading...</pre>;
@@ -115,8 +93,8 @@ export const Countries = ({ initialValue }) => {
             <div>Region- {item.region} </div>
             <div>Timezones- {item.timezones} </div>
             <div className="mt-2">
-                     <UseModal data={item} />
-             </div>
+              <UseModal data={item} />
+            </div>
           </div>
 
           <div>
@@ -124,24 +102,10 @@ export const Countries = ({ initialValue }) => {
           </div>
         </div>
       ))}
-      <div>
-        <div className={styles.container}>
-          <div className={(styles.box, styles.box1)}></div>
-          <div className={(styles.box, styles.box2)}></div>
-          <div className={(styles.box, styles.box3)}></div>
-          <div className={(styles.box, styles.box4)}></div>
-          <div className={(styles.box, styles.box5)}></div>
-        </div>
-        {showButton && (
-          <button onClick={scrollToTop} className={styles.backtotop}>
-            &#8679;
-          </button>
-        )}
-      </div>
+      <div></div>
     </div>
   );
 };
-
 
 Countries.defaultProps = {
   initialValue: 'All',
