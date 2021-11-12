@@ -87,7 +87,7 @@ export const UseModal = ({ data }) => {
       return <> </>;
     }
   };
-  console.log(data.timezones);
+ 
 
   return (
     <div>
