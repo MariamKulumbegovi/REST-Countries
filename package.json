@@ -20,7 +20,7 @@
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.2"
   },
-  "homepage": "https://github.com/MariamKulumbegovi/rest-countries",
+  "homepage": "https://github.com/MariamKulumbegovi/rest-countries/tree/REST-Countries",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
