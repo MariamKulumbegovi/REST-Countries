@@ -23,7 +23,7 @@ export const Countries = ({ initialValue }) => {
     return <code>Error</code>;
   }
 
-  console.log(items, 'items');
+ 
 
   function search(items) {
     return items.filter(item => {
