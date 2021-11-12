@@ -82,12 +82,13 @@ body {
   left: 0.1px !important;
   width: 250px !important;
 }
-.selected {
+/* .selected {
   color: #f17f7f !important;
   background-color: rgba(117, 117, 139, 0.609) !important ;
-}
+} */
+
 .white {
-  color: white;
+  color: white ;
 }
 .height200 {
   height: 200px;

@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom';
 import * as route from '../../../constants/routes';
 import { AuthContext } from '../../providers/AuthProvider/AuthProvider';
 
+
 export default props => {
   const { loggedIn, logOut } = useContext(AuthContext);
 
@@ -27,6 +28,7 @@ export default props => {
     return (
       <div className=" height200 ">
         <div className=" is-flex is-flex-direction-column">
+       
           <NavLink
             activeClassName="selected"
             className="navbar-item  white"
@@ -34,12 +36,21 @@ export default props => {
           >
             Countries
           </NavLink>
+          
           <NavLink
             activeClassName="selected"
             className="navbar-item white"
             to={route.LIST_PATH}
           >
             List
+          </NavLink>
+          <NavLink
+            activeClassName=" selectedd"
+            className="navbar-item  white "
+            
+            to={route.HOME_PATH}
+          >
+            World Map
           </NavLink>
         </div>
 
