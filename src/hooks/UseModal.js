@@ -87,7 +87,6 @@ export const UseModal = ({ data }) => {
       return <> </>;
     }
   };
- 
 
   return (
     <div>

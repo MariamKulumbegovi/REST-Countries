@@ -23,8 +23,6 @@ export const Countries = ({ initialValue }) => {
     return <code>Error</code>;
   }
 
- 
-
   function search(items) {
     return items.filter(item => {
       if (item.region == filterParam) {
