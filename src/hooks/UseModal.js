@@ -4,7 +4,6 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import styles from './UseModal.module.css';
-import { useEffect } from 'react';
 
 export const UseModal = ({ data }) => {
   const style = {
@@ -43,7 +42,7 @@ export const UseModal = ({ data }) => {
   const languages = () => {
     if (data.languages) {
       const langs = data.languages;
-      const array = Object.values(langs);
+      const array = Object.values(langs).join(', ');
       return <span>languages- {array}</span>;
     } else if (!data.languages) {
       return <li></li>;
@@ -70,6 +69,25 @@ export const UseModal = ({ data }) => {
       return <li>This country is a member of UN</li>;
     }
   };
+  const border = () => {
+    if (data.borders) {
+      const bor = data.borders;
+      const array = bor.join(', ');
+      return array;
+    } else if (!data.borders) {
+      return <> </>;
+    }
+  };
+  const timezones = () => {
+    if (data.timezones) {
+      const time = data.timezones;
+      const array = time.join(', ');
+      return array;
+    } else if (!data.timezones) {
+      return <> </>;
+    }
+  };
+  console.log(data.timezones);
 
   return (
     <div>
@@ -99,7 +117,7 @@ export const UseModal = ({ data }) => {
                   <img src={data.coatOfArms.svg} width="auto" height="auto" />
                 </li>
                 <li>Area={data.area}km2</li>
-                <li>Borders-{data.borders}</li>
+                <li>Borders-{border()}</li>
                 <li>Capital-{data.capital}</li>
                 <li>Car Side-{data.car.side}</li>
                 <li className="is-flex">Continent-{data.continents}</li>
@@ -111,10 +129,10 @@ export const UseModal = ({ data }) => {
                 <li className="is-flex">{currency()}</li>
                 <li className="is-flex">Population-{data.population}</li>
                 <li className="is-flex">Region -{data.region}</li>
-                <li className="is-flex">Strart of week -{data.startOfWeek}</li>
+                <li className="is-flex">Start of week -{data.startOfWeek}</li>
                 <li className="is-flex">Status -{data.status}</li>
                 <li className="is-flex">Subregion -{data.subregion}</li>
-                <li className="is-flex">Timezones -{data.timezones}</li>
+                <li className="is-flex">Timezones -{timezones()}</li>
                 <li className="is-flex">UN membership-{unMembership()}</li>
               </ul>
             </div>

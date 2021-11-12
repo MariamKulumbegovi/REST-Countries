@@ -1,46 +1,31 @@
 import { useState } from 'react';
-import { useAuthContext } from '../../../components/providers/AuthProvider';
 import { EmailInput } from '../../../components/Elements';
 import { ConfirmPassword } from '../../../components/Elements/confirmPassword/ConfirmPassword';
 import { saveItem } from '../../../helpers/LocalStorage';
 import { AUTH_TOKEN } from '../../../constants/Constants';
 import '../../../App.css';
+import { Link } from 'react-router-dom';
+import { LOGIN_PATH } from '../../../constants/routes';
+import { Registration } from '../../../services/RegisterService';
 export const Register = () => {
   const [registered, setRegistered] = useState(false);
 
-  // const {logIn}=useAuthContext()
-
-  const onSubmit = event => {
+  const onSubmit = async event => {
     event.preventDefault();
 
     const fd = new FormData(event.target);
-    const loginData = {};
+    const registerData = {};
 
     for (let [key, value] of fd.entries()) {
-      loginData[key] = value;
-      delete loginData.confirmPassword;
+      registerData[key] = value;
+      delete registerData.confirmPassword;
     }
-    console.log(loginData);
 
-    fetch(`${process.env.REACT_APP_API_URL}/register`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      body: JSON.stringify(loginData),
-    })
-      .then(res => res.json())
-      .then(result => {
-        if (result.token) {
-          saveItem(AUTH_TOKEN, result.token);
-          setRegistered(true);
-        }
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    const result = await Registration(registerData);
+    saveItem(AUTH_TOKEN, result.token);
+    setRegistered(true);
   };
+
   const register = () => {
     return (
       <form className="content mt60" onSubmit={onSubmit}>
@@ -60,10 +45,13 @@ export const Register = () => {
   };
   const registerSuccess = () => {
     return (
-      <div className="content flex">
+      <div className="content flex mt50">
         <div className="field">
-          <h1 className="h1">Successfully Registered!</h1>
-          <strong className="strong"> You can go to the log in page now</strong>
+          <h1 className="h1 ">Successfully Registered!</h1>
+          <Link to={LOGIN_PATH} className="strong">
+            {' '}
+            Click here to log in
+          </Link>
         </div>
       </div>
     );

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { TEST_IDS } from '../../../constants/TestIds';
 import { Register_Password_Min_Value } from '../../../constants/Validation';
 
 export const ConfirmPassword = () => {
@@ -58,6 +59,7 @@ export const ConfirmPassword = () => {
           value={password}
           required
           onChange={({ target }) => setPassword(target.value)}
+          data-testid={TEST_IDS.confirmPassInput.confirmpass}
         />
         <span className="icon is-small is-left">
           <i className="fas fa-lock"></i>

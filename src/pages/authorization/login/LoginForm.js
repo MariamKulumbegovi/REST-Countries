@@ -34,7 +34,3 @@ export const LoginForm = () => {
     </form>
   );
 };
-
-// export const passValue=() => {
-//   PasswordInput.value
-// }

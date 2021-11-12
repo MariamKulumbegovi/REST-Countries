@@ -1,16 +1,11 @@
-import React from "react";
-import { Link} from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import Earth from '../../img/earth.png';
 import styles from './Header.module.css';
-import Sidebar from "../Elements/sidebar/Sidebar";
-import { COUNTRIES_PATH } from "../../constants/routes";
-
-
-
+import Sidebar from '../Elements/sidebar/Sidebar';
+import { COUNTRIES_PATH } from '../../constants/routes';
 
 export const Header = () => {
-  
-
   return (
     <div>
       <nav
@@ -20,19 +15,20 @@ export const Header = () => {
         id="nav"
       >
         <div className="navbar-brand hamburger ">
-       
           <Link className="navbar-item" to={COUNTRIES_PATH}>
-            <img className={styles.earth} src={Earth} width="auto" height="auto" />
+            <img
+              className={styles.earth}
+              src={Earth}
+              width="auto"
+              height="auto"
+            />
           </Link>
-          <Sidebar className="container left"  pageWrapId={"page-wrap"} outerContainerId={"nav"}  />
-         
-     
-          
-        
-
+          <Sidebar
+            className="container left"
+            pageWrapId={'page-wrap'}
+            outerContainerId={'nav'}
+          />
         </div>
-        
-        
       </nav>
     </div>
   );

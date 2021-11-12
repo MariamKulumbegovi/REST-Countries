@@ -6,20 +6,20 @@ import { EmailInput } from './EmailInput';
 describe('EmailInput', () => {
   it('should render error state', () => {
     const Component = render(<EmailInput />);
-    const inputElement = Component.findByTestId(
+    const inputElement = Component.getByTestId(
       TEST_IDS.emailinput.inputElement
     );
     userEvent.type(inputElement, 'Error');
-    expect(Component.findByTestId(TEST_IDS.emailinput.hasError))
+    expect(Component.getByTestId(TEST_IDS.emailinput.hasError))
       .toBeInTheDocument;
   });
   it('should render successful state', () => {
     const Component = render(<EmailInput />);
-    const inputelement = Component.findByTestId(
+    const inputelement = Component.getByTestId(
       TEST_IDS.emailinput.inputElement
     );
     userEvent.type(inputelement, 'success@email.com');
-    expect(Component.findByTestId(TEST_IDS.emailinput.isSuccess))
+    expect(Component.getByTestId(TEST_IDS.emailinput.isSuccess))
       .toBeInTheDocument;
   });
 });

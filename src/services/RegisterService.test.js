@@ -1,13 +1,13 @@
-import { login } from './AuthService';
+import { Registration } from './RegisterService';
 
-const mockedlog = jest.fn();
-global.console.log = mockedlog;
+const mockedRegister = jest.fn();
+global.console.log = mockedRegister;
 const mockederror = new Error('Error');
 const result = {
   token: 'token',
 };
 
-describe('login service', () => {
+describe('Registration service', () => {
   it('should return token when the response is Ok', async () => {
     global.fetch = jest.fn(() =>
       Promise.resolve({
@@ -15,16 +15,16 @@ describe('login service', () => {
       })
     );
 
-    const response = await login({});
+    const response = await Registration({});
 
     expect(response).toStrictEqual(result);
   });
   it('should return error when failed', async () => {
     global.fetch = jest.fn(() => Promise.reject(mockederror));
 
-    const response = await login({});
+    const response = await Registration({});
     expect(response).toBe(undefined);
-    expect(mockedlog).toBeCalledTimes(1);
-    expect(mockedlog).toBeCalledWith(mockederror);
+    expect(mockedRegister).toBeCalledTimes(1);
+    expect(mockedRegister).toBeCalledWith(mockederror);
   });
 });

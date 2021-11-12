@@ -18,22 +18,22 @@ export const List = () => {
 
       <div className="">
         <table className={` ${styles[`tableback`]}`}>
-          <tr>
-            <th className={styles.th}>Country</th>
-            <th className={styles.th}>Population</th>
-            <th className={styles.th}>Area</th>
-          </tr>
-          {items.map(item => {
-            return (
-              <>
-                <tr className={styles.white} key={item.capital}>
+          <tbody>
+            <tr>
+              <th className={styles.th}>Country</th>
+              <th className={styles.th}>Population</th>
+              <th className={styles.th}>Area</th>
+            </tr>
+            {items.map(item => {
+              return (
+                <tr className={styles.white} key={item.name.common}>
                   <td className={styles.white}>{item.name.official}</td>
                   <td className={styles.white}>{item.population}</td>
                   <td className={styles.white}>{item.area}</td>
                 </tr>
-              </>
-            );
-          })}
+              );
+            })}
+          </tbody>
         </table>
       </div>
       <div></div>

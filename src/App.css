@@ -25,11 +25,14 @@ body {
 }
 .content .h1 {
   color: rgb(197, 197, 197);
-  font-size: 50px;
+  font-size: 30px;
 }
 .strong {
   font-size: 30px;
   color: rgb(214, 218, 214);
+}
+.strong:hover {
+  color: rgb(10, 10, 226);
 }
 .red {
   color: rgb(250, 0, 0);
@@ -55,4 +58,7 @@ body::-webkit-scrollbar-track {
 .scrollbar::-webkit-scrollbar-thumb {
   background: rgb(199, 67, 67);
   outline: rgb(199, 67, 67);
+}
+.mt50 {
+  margin-top: 50px;
 }

@@ -5,10 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { AuthProvider } from './components/providers/AuthProvider';
-import axios from 'axios';
 import { ErrorBoundary } from './components/errorBoundary';
-
-axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 
 ReactDOM.render(
   <React.StrictMode>
